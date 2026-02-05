@@ -1,0 +1,7 @@
+[gd_resource type="ColorPalette" script_class="NamedColorPalette" load_steps=2 format=3 uid="uid://dwb6koec135gf"]
+
+[ext_resource type="Script" uid="uid://5jicefe1v0qo" path="res://named_color_palette.gd" id="1_bf7oi"]
+
+[resource]
+script = ExtResource("1_bf7oi")
+metadata/_custom_type_script = "uid://5jicefe1v0qo"

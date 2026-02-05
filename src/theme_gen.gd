@@ -2,14 +2,16 @@
 extends ProgrammaticTheme
 const UPDATE_ON_SAVE = true
 
+@export var palette = preload("res://my_palette.tres")
+
 func setup():
 	set_save_path("res://generated/global_theme.tres")
 
 
-var button_color = Color("12422eff")
+var button_color = palette.primary
 var button_hover_color = button_color.darkened(0.1)
 var button_pressed_color = button_color.darkened(0.15)
-var button_border_color = Color("00a465ff")
+var button_border_color = palette.accent
 var default_border_width = 4 
 var default_corner_radius = 5
 var default_content_margins = content_margins(45, 35)

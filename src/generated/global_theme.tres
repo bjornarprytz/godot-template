@@ -4,17 +4,33 @@
 [ext_resource type="FontFile" uid="uid://cvstwwcqnu5w" path="res://assets/fonts/Jersey15-Regular.ttf" id="2_arlvn"]
 [ext_resource type="FontFile" uid="uid://ddup67a0s5l5x" path="res://assets/fonts/Tiny5-Regular.ttf" id="2_ekht3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arlvn"]
+content_margin_left = 45.0
+content_margin_top = 35.0
+content_margin_right = 45.0
+content_margin_bottom = 35.0
+bg_color = Color(0.07058824, 0.24705882, 0.5647059, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.9607843, 0.8352941, 0.2784314, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq3ui"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
 content_margin_bottom = 35.0
-bg_color = Color(0.06352941, 0.23294118, 0.16235293, 1)
+bg_color = Color(0.078431375, 0.27450982, 0.627451, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0, 0.6431373, 0.39607844, 1)
+border_color = Color(0.9607843, 0.8352941, 0.2784314, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -25,34 +41,18 @@ content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
 content_margin_bottom = 35.0
-bg_color = Color(0.07058824, 0.25882354, 0.18039216, 1)
+bg_color = Color(0.06666667, 0.23333335, 0.53333336, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0, 0.6431373, 0.39607844, 1)
+border_color = Color(0.9607843, 0.8352941, 0.2784314, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfd5p"]
-content_margin_left = 45.0
-content_margin_top = 35.0
-content_margin_right = 45.0
-content_margin_bottom = 35.0
-bg_color = Color(0.060000006, 0.22000001, 0.15333334, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0.6431373, 0.39607844, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ahide"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfd5p"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
@@ -68,10 +68,10 @@ axis_stretch_vertical = 2
 [resource]
 default_font = ExtResource("2_ekht3")
 default_font_size = 32
-Button/styles/hover = SubResource("StyleBoxFlat_bq3ui")
-Button/styles/normal = SubResource("StyleBoxFlat_q6bo0")
-Button/styles/pressed = SubResource("StyleBoxFlat_pfd5p")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_ahide")
+Button/styles/hover = SubResource("StyleBoxFlat_arlvn")
+Button/styles/normal = SubResource("StyleBoxFlat_bq3ui")
+Button/styles/pressed = SubResource("StyleBoxFlat_q6bo0")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_pfd5p")
 Title/base_type = &"RichTextLabel"
 Title/font_sizes/normal_font_size = 64
 Title/fonts/normal_font = ExtResource("2_arlvn")

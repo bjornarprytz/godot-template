@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://pfmhxlfn7jic"]
+
+[ext_resource type="Script" uid="uid://dqbx4afkkpm1y" path="res://autoloads/palette.gd" id="1_1cawm"]
+
+[node name="Palette" type="Node2D"]
+script = ExtResource("1_1cawm")
