@@ -26,7 +26,7 @@ Events="*res://autoloads/event_bus.tscn"
 Create="*res://autoloads/factory.tscn"
 Audio="*res://autoloads/audio_manager.tscn"
 NodeEffects="*res://autoloads/node_effects.tscn"
-Palette="*res://autoloads/palette.tscn"
+Settings="*res://autoloads/settings.tscn"
 
 [display]
 

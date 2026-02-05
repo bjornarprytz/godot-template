@@ -1,5 +1,5 @@
 class_name EventBus
-extends Node2D
+extends Node
 
 
 # Add signals here for game-wide events. Access through the Events singleton

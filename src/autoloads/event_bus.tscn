@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://cqij6gqe5sayb" path="res://autoloads/event_bus.gd" id="1_iyk57"]
 
-[node name="EventBus" type="Node2D"]
+[node name="EventBus" type="Node"]
 script = ExtResource("1_iyk57")
