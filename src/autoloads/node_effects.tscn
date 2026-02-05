@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bvueo0nhps643"]
+[gd_scene format=3]
 
 [ext_resource type="Script" uid="uid://6xhqdbckbu5c" path="res://autoloads/node_effects.gd" id="1_wt2q4"]
 

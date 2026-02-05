@@ -1,9 +1,10 @@
-[gd_resource type="Theme" format=3 uid="uid://cwi2l6qtt6la6"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cwi2l6qtt6la6"]
 
 [ext_resource type="Texture2D" uid="uid://b3j5t5dtouj45" path="res://assets/panel-texture.png" id="1_ekht3"]
-[ext_resource type="FontFile" uid="uid://dm08mvl84ygq3" path="res://assets/fonts/Fira_Code/static/FiraCode-Regular.ttf" id="2_ekht3"]
+[ext_resource type="FontFile" uid="uid://cvstwwcqnu5w" path="res://assets/fonts/Jersey15-Regular.ttf" id="2_arlvn"]
+[ext_resource type="FontFile" uid="uid://ddup67a0s5l5x" path="res://assets/fonts/Tiny5-Regular.ttf" id="2_ekht3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arlvn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq3ui"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
@@ -19,7 +20,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq3ui"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6bo0"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
@@ -35,7 +36,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6bo0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfd5p"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
@@ -51,7 +52,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfd5p"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ahide"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
@@ -67,7 +68,10 @@ axis_stretch_vertical = 2
 [resource]
 default_font = ExtResource("2_ekht3")
 default_font_size = 32
-Button/styles/hover = SubResource("StyleBoxFlat_arlvn")
-Button/styles/normal = SubResource("StyleBoxFlat_bq3ui")
-Button/styles/pressed = SubResource("StyleBoxFlat_q6bo0")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_pfd5p")
+Button/styles/hover = SubResource("StyleBoxFlat_bq3ui")
+Button/styles/normal = SubResource("StyleBoxFlat_q6bo0")
+Button/styles/pressed = SubResource("StyleBoxFlat_pfd5p")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_ahide")
+Title/base_type = &"RichTextLabel"
+Title/font_sizes/normal_font_size = 64
+Title/fonts/normal_font = ExtResource("2_arlvn")

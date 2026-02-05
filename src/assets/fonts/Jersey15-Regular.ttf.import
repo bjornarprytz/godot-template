@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bb122o3gnfkmh"
-path="res://.godot/imported/BonaNovaSC-Italic.ttf-41c3b32cd006aff000331a6dcc8d2c35.fontdata"
+uid="uid://cvstwwcqnu5w"
+path="res://.godot/imported/Jersey15-Regular.ttf-02b7a9c16d7f58e87e7892dd150df4bc.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Bona_Nova_SC/BonaNovaSC-Italic.ttf"
-dest_files=["res://.godot/imported/BonaNovaSC-Italic.ttf-41c3b32cd006aff000331a6dcc8d2c35.fontdata"]
+source_file="res://assets/fonts/Jersey15-Regular.ttf"
+dest_files=["res://.godot/imported/Jersey15-Regular.ttf-02b7a9c16d7f58e87e7892dd150df4bc.fontdata"]
 
 [params]
 
@@ -21,8 +21,9 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null

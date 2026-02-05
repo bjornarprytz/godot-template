@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://5cnrtekvl5cg"
-path="res://.godot/imported/FiraCode-VariableFont_wght.ttf-f0ca2efc9a744d1a7aafcc6ffd3c4e1a.fontdata"
+uid="uid://ca17vulrgo71r"
+path="res://.godot/imported/Micro5-Regular.ttf-6e6d3d20c5e9bd6348b7d45614acfd71.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Fira_Code/FiraCode-VariableFont_wght.ttf"
-dest_files=["res://.godot/imported/FiraCode-VariableFont_wght.ttf-f0ca2efc9a744d1a7aafcc6ffd3c4e1a.fontdata"]
+source_file="res://assets/fonts/Micro5-Regular.ttf"
+dest_files=["res://.godot/imported/Micro5-Regular.ttf-6e6d3d20c5e9bd6348b7d45614acfd71.fontdata"]
 
 [params]
 
@@ -21,8 +21,9 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null

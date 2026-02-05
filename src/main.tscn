@@ -1,61 +1,70 @@
-[gd_scene format=3 uid="uid://cgrejd4v5ywd3"]
+[gd_scene load_steps=3 format=3 uid="uid://cgrejd4v5ywd3"]
 
 [ext_resource type="Script" uid="uid://736gp2f48fi7" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bfq2ku3f8tps3" path="res://player.tscn" id="2_0xm2m"]
 
-[node name="Main" type="Node2D" unique_id=1144932589]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1750519712]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1108575173]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 texture_filter = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -145.0
-offset_top = -88.0
-offset_right = 298.0
-offset_bottom = 155.0
+offset_left = -226.0
+offset_top = 151.0
+offset_right = 227.0
+offset_bottom = 329.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer" unique_id=714050723]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer" unique_id=1303213411]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1337569944]
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"Title"
 bbcode_enabled = true
-text = "[u]Hello World"
+text = "This is the title"
 fit_content = true
+scroll_active = false
 
-[node name="Title2" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1244825269]
+[node name="Title2" type="RichTextLabel" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "This is the main text"
+bbcode_enabled = true
+text = "This is the main text, but [wave]there's more[/wave]"
+fit_content = true
+scroll_active = false
 
-[node name="Button" type="Button" parent="CanvasLayer" unique_id=1665505160]
+[node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 64.0
 offset_top = 562.0
 offset_right = 154.0
 offset_bottom = 632.0
 text = "Beep"
 
-[node name="Button2" type="Button" parent="CanvasLayer" unique_id=711350220]
+[node name="Button2" type="Button" parent="CanvasLayer"]
 offset_left = 1070.0
 offset_top = 548.0
 offset_right = 1237.0
 offset_bottom = 661.0
 text = "Beep"
 
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(637, 256)
+
+[connection signal="mouse_entered" from="CanvasLayer/Button" to="." method="_on_button_mouse_entered" flags=18]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_right_button_pressed"]

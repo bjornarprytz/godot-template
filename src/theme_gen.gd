@@ -12,12 +12,15 @@ var button_pressed_color = button_color.darkened(0.15)
 var button_border_color = Color("00a465ff")
 var default_border_width = 4 
 var default_corner_radius = 5
-var default_font_size = 32
-var title_font_size = 64
+var default_content_margins = content_margins(45, 35)
+
 var panel_texture = preload("res://assets/panel-texture.png")
 
-var default_font = preload("res://assets/fonts/Fira_Code/static/FiraCode-Regular.ttf")
-var default_content_margins = content_margins(45, 35)
+var default_font = preload("res://assets/fonts/Tiny5-Regular.ttf")
+var default_font_size = 32
+
+var title_font = preload("res://assets/fonts/Jersey15-Regular.ttf")
+var title_font_size = 64
 
 func define_theme():
 	define_default_font(default_font)
@@ -56,4 +59,9 @@ func define_theme():
 		normal = button_style,
 		hover = button_hover_style,
 		pressed = button_pressed_style,
+	})
+	
+	define_variant_style("Title", "RichTextLabel", {
+		normal_font = title_font,
+		normal_font_size = title_font_size
 	})
