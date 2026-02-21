@@ -99,7 +99,6 @@ if [[ -f "$README_FILE" ]]; then
         GITHUB_USER="${BASH_REMATCH[1]}"
         GITHUB_REPO="${BASH_REMATCH[2]}"
       elif [[ "$REMOTE_URL" =~ ^https?://([^/]+)/([^/]+)/([^/]+)(\.git)?$ ]]; then
-        # e.g. https://github.com/user/repo.git or https://git.example.com/user/repo
         HOST="${BASH_REMATCH[1]}"
         GITHUB_USER="${BASH_REMATCH[2]}"
         GITHUB_REPO="${BASH_REMATCH[3]}"
@@ -109,19 +108,44 @@ if [[ -f "$README_FILE" ]]; then
     fi
   fi
 
-  # Use perl for safe in-place replacement handling special characters
-  if command -v perl >/dev/null 2>&1; then
-    perl -0777 -pe "s/\{jamName\}/\Q$GAME_NAME_VAL\E/g; s/\{itchioUsername\}/\Q$ITCHIO_USERNAME_VAL\E/g;" -i "$README_FILE"
+  # Use awk for safe literal in-place replacement (no backslash-escaping of hyphens)
+  if command -v awk >/dev/null 2>&1; then
+    # replace {jamName} and {itchioUsername}
+    awk -v jam="$GAME_NAME_VAL" -v itchio="$ITCHIO_USERNAME_VAL" '{ gsub(/\{jamName\}/, jam); gsub(/\{itchioUsername\}/, itchio); print }' "$README_FILE" > "$README_FILE.tmp" && mv "$README_FILE.tmp" "$README_FILE"
+
     if [[ -n "$GITHUB_USER" ]]; then
-      perl -0777 -pe "s/\{githubUsername\}/\Q$GITHUB_USER\E/g;" -i "$README_FILE"
-      # also replace full repo link if present
-      perl -0777 -pe "s#https://github.com/\{githubUsername\}/\{jamName\}#https://github.com/$GITHUB_USER/$GITHUB_REPO#g;" -i "$README_FILE"
+      awk -v user="$GITHUB_USER" -v repo="$GITHUB_REPO" '{ gsub(/\{githubUsername\}/, user); gsub(/https:\/\/github.com\/\{githubUsername\}\/\{jamName\}/, "https://github.com/" user "/" repo); print }' "$README_FILE" > "$README_FILE.tmp" && mv "$README_FILE.tmp" "$README_FILE"
     fi
   else
-    echo "perl not found; skipping placeholder replacement in $README_FILE"
+    echo "awk not found; skipping placeholder replacement in $README_FILE"
   fi
 
   echo "Updated $README_FILE"
 else
   echo "No readme.md found at $README_FILE; skipping update."
+fi
+
+# Replace placeholder tokens across project files (e.g. in workflows)
+echo "Replacing ITCHIO_USERNAME, GAME_NAME and GODOT_VERSION across project files..."
+if command -v grep >/dev/null 2>&1 && command -v awk >/dev/null 2>&1; then
+  # find text files (ignore .git and scripts/) that contain any of the placeholder tokens
+  mapfile -t FILES < <(grep -RIl --exclude-dir=.git --exclude-dir=scripts -e 'ITCHIO_USERNAME' -e 'GAME_NAME' -e 'GODOT_VERSION' . || true)
+  for f in "${FILES[@]:-}"; do
+    # skip README which we already handled
+    if [[ "$(realpath "$f")" == "$(realpath "$README_FILE")" ]]; then
+      continue
+    fi
+    # also skip any files under scripts/
+    case "$f" in
+      ./scripts/*|scripts/*)
+        continue
+        ;;
+    esac
+    # perform literal replacements; handle bracketed forms like [GAME_NAME]
+    awk -v itchio="$ITCHIO_USERNAME_VAL" -v jam="$GAME_NAME_VAL" -v godot="$GODOT_VERSION_VAL" \
+      '{ gsub(/\[?ITCHIO_USERNAME\]?/, itchio); gsub(/\[?GAME_NAME\]?/, jam); gsub(/\[?GODOT_VERSION\]?/, godot); print }' "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+    echo "Patched: $f"
+  done
+else
+  echo "grep or awk not found; skipping project-wide token replacement."
 fi
