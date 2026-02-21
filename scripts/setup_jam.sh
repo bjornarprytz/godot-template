@@ -144,9 +144,13 @@ if command -v grep >/dev/null 2>&1 && command -v awk >/dev/null 2>&1; then
         continue
         ;;
     esac
-    # perform literal replacements; handle bracketed forms like [GAME_NAME]
+    # perform literal replacements; replace bracketed [TOKEN], "TOKEN" and 'TOKEN' forms only
     awk -v itchio="$ITCHIO_USERNAME_VAL" -v jam="$GAME_NAME_VAL" -v godot="$GODOT_VERSION_VAL" \
-      '{ gsub(/\[?ITCHIO_USERNAME\]?/, itchio); gsub(/\[?GAME_NAME\]?/, jam); gsub(/\[?GODOT_VERSION\]?/, godot); print }' "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+      '{ gsub(/\[ITCHIO_USERNAME\]/, itchio); gsub(/\[GAME_NAME\]/, jam); gsub(/\[GODOT_VERSION\]/, godot);
+        gsub(/"ITCHIO_USERNAME"/, "\"" itchio "\""); gsub(/"GAME_NAME"/, "\"" jam "\""); gsub(/"GODOT_VERSION"/, "\"" godot "\"");
+        sq = sprintf("%c",39);
+        gsub(sq "ITCHIO_USERNAME" sq, sq itchio sq); gsub(sq "GAME_NAME" sq, sq jam sq); gsub(sq "GODOT_VERSION" sq, sq godot sq);
+        print }' "$f" > "$f.tmp" && mv "$f.tmp" "$f"
     echo "Patched: $f"
   done
 else
