@@ -8,15 +8,16 @@ CONFIG="$HOME/.jam.config"
 echo "Checking for existing config at $CONFIG..."
 if [[ -f "$CONFIG" ]]; then
   echo "Found existing config:"
-  grep -E '^(ITCHIO_USERNAME|GAME_NAME|GODOT_VERSION)=' "$CONFIG" || true
+  grep -E '^(ITCHIO_USERNAME)=' "$CONFIG" || true
   read -rp "Overwrite existing config? [y/N]: " overwrite
-  if [[ ! "$overwrite" =~ ^[Yy]$ ]]; then
-    echo "Keeping existing config. To view it: cat $CONFIG"
-    exit 0
-  fi
   # load existing values as defaults
   # shellcheck disable=SC1090
   source "$CONFIG"
+  if [[ "$overwrite" =~ ^[Yy]$ ]]; then
+    echo "Existing config will be overwritten later if you confirm."
+  else
+    echo "Keeping existing config; ITCHIO_USERNAME will be used as default. The config file will not be modified unless you confirm later."
+  fi
 else
   echo "No existing config found."
 fi
@@ -64,21 +65,23 @@ Summary:
 EOF
 
 read -rp "Create/overwrite $CONFIG with these values? [Y/n]: " confirm
+WRITE_CONFIG=true
 if [[ "$confirm" =~ ^([Nn])$ ]]; then
-  echo "Aborted. No changes made."
-  exit 0
+  echo "Skipping writing $CONFIG; proceeding with README and project replacements."
+  WRITE_CONFIG=false
 fi
 
-# write config
-mkdir -p "$(dirname "$CONFIG")"
-{
-  printf 'ITCHIO_USERNAME="%s"\n' "$ITCHIO_USERNAME_VAL"
-  printf 'GAME_NAME="%s"\n' "$GAME_NAME_VAL"
-  printf 'GODOT_VERSION="%s"\n' "$GODOT_VERSION_VAL"
-} > "$CONFIG"
-chmod 600 "$CONFIG"
-
-echo "Wrote $CONFIG"
+# write config only if requested
+if [[ "$WRITE_CONFIG" == true ]]; then
+  mkdir -p "$(dirname "$CONFIG")"
+  {
+    printf 'ITCHIO_USERNAME="%s"\n' "$ITCHIO_USERNAME_VAL"
+  } > "$CONFIG"
+  chmod 600 "$CONFIG"
+  echo "Wrote $CONFIG (ITCHIO_USERNAME only)"
+else
+  echo "Did not write $CONFIG"
+fi
 
 echo "To use these values in your shell run: source $CONFIG"
 
