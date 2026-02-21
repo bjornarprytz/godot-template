@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# scripts/init.sh
+# scripts/new.sh
 # Create a new GitHub repository from this template using the GitHub CLI (gh)
 
 set -euo pipefail
