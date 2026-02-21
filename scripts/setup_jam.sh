@@ -52,7 +52,7 @@ GODOT_VERSION_DEFAULT="${GODOT_VERSION:-}"
 
 # If `godot` is available locally, try to detect its version and offer it as the default
 if command -v godot >/dev/null 2>&1; then
-  GODOT_RAW=$(godot -v 2>&1 | head -n1 || true)
+  GODOT_RAW=$(godot --version 2>&1 | head -n1 || true)
   # extract version like 3.5.1 or 4.0.3 (handles v prefix)
   DETECTED_VERSION=$(echo "${GODOT_RAW}" | grep -oP 'v\K[0-9]+(\.[0-9]+){1,2}(-[a-z0-9]+)?' || true)
   if [[ -n "${DETECTED_VERSION}" ]]; then
