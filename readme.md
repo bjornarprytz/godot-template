@@ -4,6 +4,10 @@ game on itch.io: [link](https://{itchioUsername}.itch.io/{jamName})
 
 ## TODO
 
+- Run setup:
+  - `chmod +x scripts/setup_jam.sh`
+  - `./scripts/setup_jam.sh`
+
 - Import the project into Godot
 
 - Setup itch.io page for {jamName} [link](https://itch.io/game/new)
@@ -11,7 +15,6 @@ game on itch.io: [link](https://{itchioUsername}.itch.io/{jamName})
   - Set Kind to HTML
   - Hit the Save button
 - Get Butler API key from [itch.io](https://itch.io/user/settings/api-keys)
-- Publish github repo
 - Add key to GitHub repository secrets as BUTLER_API_KEY [link](https://github.com/{githubUsername}/{jamName}/settings/secrets/actions)
 - Push release with `./push_release.sh`
 - Go [here](https://{itchioUsername}.itch.io/{jamName}/edit) and edit game:
