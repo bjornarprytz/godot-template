@@ -35,8 +35,13 @@ prompt() {
 }
 
 ITCHIO_USERNAME_DEFAULT="${ITCHIO_USERNAME:-}"
-# default game name uses current folder name if no GAME_NAME provided
-DEFAULT_DIR_NAME=$(basename "$(pwd)")
+# default game name uses repository root folder name if no GAME_NAME provided
+# prefer git repo root when available so running from scripts/ still yields the project name
+PROJECT_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+if [[ -z "$PROJECT_ROOT" ]]; then
+  PROJECT_ROOT="$(pwd)"
+fi
+DEFAULT_DIR_NAME=$(basename "$PROJECT_ROOT")
 DEFAULT_DIR_SLUG=$(echo "$DEFAULT_DIR_NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g' | sed -E 's/^-+|-+$//g')
 GAME_NAME_DEFAULT="${GAME_NAME:-$DEFAULT_DIR_SLUG}"
 GODOT_VERSION_DEFAULT="${GODOT_VERSION:-}"
