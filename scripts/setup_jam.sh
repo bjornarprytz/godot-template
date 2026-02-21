@@ -44,6 +44,10 @@ fi
 DEFAULT_DIR_NAME=$(basename "$PROJECT_ROOT")
 DEFAULT_DIR_SLUG=$(echo "$DEFAULT_DIR_NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g' | sed -E 's/^-+|-+$//g')
 GAME_NAME_DEFAULT="${GAME_NAME:-$DEFAULT_DIR_SLUG}"
+# If GAME_NAME was set but empty, ensure we still use the directory-derived slug
+if [[ -z "${GAME_NAME_DEFAULT// }" ]]; then
+  GAME_NAME_DEFAULT="$DEFAULT_DIR_SLUG"
+fi
 GODOT_VERSION_DEFAULT="${GODOT_VERSION:-}"
 
 # If `godot` is available locally, try to detect its version and offer it as the default
