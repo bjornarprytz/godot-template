@@ -53,10 +53,24 @@ GODOT_VERSION_DEFAULT="${GODOT_VERSION:-}"
 # If `godot` is available locally, try to detect its version and offer it as the default
 if command -v godot >/dev/null 2>&1; then
   GODOT_RAW=$(godot --version 2>&1 | head -n1 || true)
-  # extract version like 3.5.1 or 4.0.3 (handles v prefix)
-  DETECTED_VERSION=$(echo "${GODOT_RAW}" | grep -oP 'v\K[0-9]+(\.[0-9]+){1,2}(-[a-z0-9]+)?' || true)
+  # Try to extract numeric base (e.g. 4.6.1) and optional label (e.g. stable)
+  DETECTED_VERSION=""
+  BASE=$(echo "$GODOT_RAW" | grep -oE '[0-9]+(\.[0-9]+){1,2}' | head -n1 || true)
+  if [[ -n "$BASE" ]]; then
+    # remainder after the base version
+    REST="${GODOT_RAW#*$BASE}"
+    # strip leading dot or dash
+    REST="${REST#[.-]}"
+    LABEL=$(echo "$REST" | grep -oE '^[A-Za-z0-9]+' || true)
+    if [[ -n "$LABEL" ]]; then
+      DETECTED_VERSION="${BASE}-${LABEL}"
+    else
+      DETECTED_VERSION="$BASE"
+    fi
+  fi
+
   if [[ -n "${DETECTED_VERSION}" ]]; then
-    echo "Detected Godot: ${GODOT_RAW}"
+    echo "Detected Godot: ${GODOT_RAW} -> ${DETECTED_VERSION}"
     read -rp "Use detected Godot version '${DETECTED_VERSION}'? [Y/n]: " use_detected
     if [[ -z "${use_detected}" || "${use_detected}" =~ ^[Yy]$ ]]; then
       GODOT_VERSION_DEFAULT="${DETECTED_VERSION}"
