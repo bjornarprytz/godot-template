@@ -35,7 +35,10 @@ prompt() {
 }
 
 ITCHIO_USERNAME_DEFAULT="${ITCHIO_USERNAME:-}"
-GAME_NAME_DEFAULT="${GAME_NAME:-}"
+# default game name uses current folder name if no GAME_NAME provided
+DEFAULT_DIR_NAME=$(basename "$(pwd)")
+DEFAULT_DIR_SLUG=$(echo "$DEFAULT_DIR_NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g' | sed -E 's/^-+|-+$//g')
+GAME_NAME_DEFAULT="${GAME_NAME:-$DEFAULT_DIR_SLUG}"
 GODOT_VERSION_DEFAULT="${GODOT_VERSION:-}"
 
 # If `godot` is available locally, try to detect its version and offer it as the default
