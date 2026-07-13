@@ -1,15 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgrejd4v5ywd3"]
+[gd_scene format=3 uid="uid://cgrejd4v5ywd3"]
 
 [ext_resource type="Script" uid="uid://736gp2f48fi7" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bfq2ku3f8tps3" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://sxqqx81q44bf" path="res://spinner.tscn" id="2_h2yge"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=199121168]
 script = ExtResource("1_ig7tw")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=657149999]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1193541145]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer" unique_id=2052932839]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/Control" unique_id=149674142]
 texture_filter = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -22,17 +39,17 @@ offset_bottom = 329.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer/Control/PanelContainer" unique_id=903165707]
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Control/PanelContainer/ScrollContainer" unique_id=793780685]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/MarginContainer/Control/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1278953401]
 layout_mode = 2
 theme_type_variation = &"Title"
 bbcode_enabled = true
@@ -40,7 +57,7 @@ text = "This is the title"
 fit_content = true
 scroll_active = false
 
-[node name="Title2" type="RichTextLabel" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Title2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/Control/PanelContainer/ScrollContainer/VBoxContainer" unique_id=2125402505]
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -48,23 +65,29 @@ text = "This is the main text, but [wave]there's more[/wave]"
 fit_content = true
 scroll_active = false
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/Control" unique_id=1510999387]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 562.0
-offset_right = 154.0
-offset_bottom = 632.0
+offset_right = 222.0
+offset_bottom = 668.0
 text = "Beep"
 
-[node name="Button2" type="Button" parent="CanvasLayer"]
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/Control" unique_id=451535462]
+layout_mode = 0
 offset_left = 1070.0
 offset_top = 548.0
 offset_right = 1237.0
 offset_bottom = 661.0
 text = "Beep"
 
-[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+[node name="Spinner" parent="CanvasLayer/MarginContainer/Control" unique_id=920385477 instance=ExtResource("2_h2yge")]
+layout_mode = 1
+offset_bottom = 42.0
+
+[node name="Player" parent="." unique_id=1996994334 instance=ExtResource("2_0xm2m")]
 position = Vector2(637, 256)
 
-[connection signal="mouse_entered" from="CanvasLayer/Button" to="." method="_on_button_mouse_entered" flags=18]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_left_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_right_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/Control/Button" to="." method="_on_button_mouse_entered" flags=18]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/Button" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Control/Button2" to="." method="_on_right_button_pressed"]

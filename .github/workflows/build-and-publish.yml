@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Export
         id: export
-        uses: firebelley/godot-export@v6.0.0
+        uses: firebelley/godot-export@v8.0.0
         with:
           godot_executable_download_url: https://github.com/godotengine/godot-builds/releases/download/${{env.GODOT_VERSION}}/Godot_v${{env.GODOT_VERSION}}_linux.x86_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot-builds/releases/download/${{env.GODOT_VERSION}}/Godot_v${{env.GODOT_VERSION}}_export_templates.tpz
@@ -61,7 +61,7 @@ jobs:
         with:
           name: ${{ env.GAME_NAME }}.${{ github.ref_name }}.${{ matrix.platform }}
       - name: Butler Upload
-        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
+        uses: josephbmanley/butler-publish-itchio-action@v1.2.0
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: ${{ matrix.platform }}
