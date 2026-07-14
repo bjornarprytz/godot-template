@@ -2,10 +2,10 @@
 extends ProgrammaticTheme
 const UPDATE_ON_SAVE = true
 
-@export var palette = preload("res://my_palette.tres")
+@export var palette = preload("res://theme/my_palette.tres")
 
 func setup():
-	set_save_path("res://generated/global_theme.tres")
+	set_save_path("res://theme/global_theme.tres")
 
 
 var button_color = palette.primary
@@ -16,7 +16,7 @@ var default_border_width = 4
 var default_corner_radius = 5
 var default_content_margins = content_margins(45, 35)
 
-var panel_texture = preload("res://assets/panel-texture.png")
+var panel_texture = preload("res://assets/img/panel-texture.png")
 
 var default_font = preload("res://assets/fonts/Tiny5-Regular.ttf")
 var default_font_size = 32

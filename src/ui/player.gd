@@ -7,4 +7,4 @@ extends Sprite2D
 
 
 func _process(delta: float) -> void:
-	speed.text = "%d / %d" % [move.current_speed, move.max_speed]
+	speed.text = "%d / %d" % [move.current_speed, move.stats.max_speed]

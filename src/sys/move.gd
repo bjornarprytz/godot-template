@@ -3,10 +3,7 @@ extends Node
 
 signal target_changed(new_target: Vector2)
 
-@export var max_speed: float = 200.0
-@export var acceleration: float = 10.0
-
-@export var rotation_speed: float = 5.0 # Radians per second
+@export var stats: MoveStats
 
 @export var body: Node2D
 	
@@ -37,7 +34,7 @@ func _process(delta: float) -> void:
 	_direction = to_target.normalized()
 	
 	# Accelerate
-	current_speed = min(current_speed + acceleration * delta, max_speed)
+	current_speed = min(current_speed + stats.acceleration * delta, stats.max_speed)
 	
 	# Move the body
 	var movement: Vector2 = _direction * current_speed * delta
@@ -49,7 +46,7 @@ func _process(delta: float) -> void:
 		var current_angle: float = body.rotation
 		var angle_diff: float = wrapf(target_angle - current_angle, -PI, PI)
 		
-		var max_rotation: float = rotation_speed * delta
+		var max_rotation: float = stats.rotation_speed * delta
 		angle_diff = clamp(angle_diff, -max_rotation, max_rotation)
 		
 		body.rotation += angle_diff

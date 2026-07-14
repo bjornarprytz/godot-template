@@ -1,6 +1,0 @@
-[gd_scene format=3]
-
-[ext_resource type="Script" uid="uid://6xhqdbckbu5c" path="res://autoloads/node_effects.gd" id="1_wt2q4"]
-
-[node name="NodeEffects" type="Node2D" unique_id=625774930]
-script = ExtResource("1_wt2q4")

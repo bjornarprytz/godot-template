@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bc8qg25hi2q5f"]
-
-[ext_resource type="Script" uid="uid://c6ixu4by4bfay" path="res://autoloads/settings.gd" id="1_ltn7h"]
-
-[node name="Settings" type="Node" unique_id=1681402458]
-script = ExtResource("1_ltn7h")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MoveStats" format=3 uid="uid://ce07h02oq6fjp"]
+
+[ext_resource type="Script" uid="uid://73kl7br23wp2" path="res://sys/move_stats.gd" id="1_dqx1j"]
+
+[resource]
+script = ExtResource("1_dqx1j")
+max_speed = 269.0
+acceleration = 6.9
+rotation_speed = 4.0
+metadata/_custom_type_script = "uid://73kl7br23wp2"

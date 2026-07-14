@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cgrejd4v5ywd3"]
 
-[ext_resource type="Script" uid="uid://736gp2f48fi7" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bfq2ku3f8tps3" path="res://player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://sxqqx81q44bf" path="res://spinner.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://736gp2f48fi7" path="res://ui/main.gd" id="1_loxbi"]
+[ext_resource type="PackedScene" uid="uid://sxqqx81q44bf" path="res://ui/spinner.tscn" id="2_t6oic"]
+[ext_resource type="PackedScene" uid="uid://bfq2ku3f8tps3" path="res://ui/player.tscn" id="3_h17sc"]
 
 [node name="Main" type="Node2D" unique_id=199121168]
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_loxbi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=657149999]
 
@@ -81,12 +81,11 @@ offset_right = 1237.0
 offset_bottom = 661.0
 text = "Beep"
 
-[node name="Spinner" parent="CanvasLayer/MarginContainer/Control" unique_id=920385477 instance=ExtResource("2_h2yge")]
-layout_mode = 1
-offset_bottom = 42.0
+[node name="Spinner" parent="CanvasLayer/MarginContainer/Control" unique_id=380209634 instance=ExtResource("2_t6oic")]
+layout_mode = 0
 
-[node name="Player" parent="." unique_id=1996994334 instance=ExtResource("2_0xm2m")]
-position = Vector2(637, 256)
+[node name="Player" parent="." unique_id=1365254553 instance=ExtResource("3_h17sc")]
+position = Vector2(641, 212)
 
 [connection signal="mouse_entered" from="CanvasLayer/MarginContainer/Control/Button" to="." method="_on_button_mouse_entered" flags=18]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Control/Button" to="." method="_on_left_button_pressed"]

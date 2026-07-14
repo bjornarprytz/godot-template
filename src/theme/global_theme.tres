@@ -1,10 +1,10 @@
 [gd_resource type="Theme" format=3 uid="uid://cwi2l6qtt6la6"]
 
-[ext_resource type="Texture2D" uid="uid://b3j5t5dtouj45" path="res://assets/panel-texture.png" id="1_ekht3"]
-[ext_resource type="FontFile" uid="uid://cvstwwcqnu5w" path="res://assets/fonts/Jersey15-Regular.ttf" id="2_arlvn"]
-[ext_resource type="FontFile" uid="uid://ddup67a0s5l5x" path="res://assets/fonts/Tiny5-Regular.ttf" id="2_ekht3"]
+[ext_resource type="Texture2D" uid="uid://b3j5t5dtouj45" path="res://assets/img/panel-texture.png" id="1_04bdp"]
+[ext_resource type="FontFile" uid="uid://cvstwwcqnu5w" path="res://assets/fonts/Jersey15-Regular.ttf" id="2_fcx6w"]
+[ext_resource type="FontFile" uid="uid://ddup67a0s5l5x" path="res://assets/fonts/Tiny5-Regular.ttf" id="3_oughr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arlvn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04bdp"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
@@ -20,7 +20,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq3ui"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcx6w"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
@@ -36,7 +36,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6bo0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oughr"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
@@ -52,12 +52,12 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfd5p"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q0kdf"]
 content_margin_left = 45.0
 content_margin_top = 35.0
 content_margin_right = 45.0
 content_margin_bottom = 35.0
-texture = ExtResource("1_ekht3")
+texture = ExtResource("1_04bdp")
 texture_margin_left = 9.0
 texture_margin_top = 9.0
 texture_margin_right = 9.0
@@ -66,12 +66,12 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
 [resource]
-default_font = ExtResource("2_ekht3")
+default_font = ExtResource("3_oughr")
 default_font_size = 32
-Button/styles/hover = SubResource("StyleBoxFlat_arlvn")
-Button/styles/normal = SubResource("StyleBoxFlat_bq3ui")
-Button/styles/pressed = SubResource("StyleBoxFlat_q6bo0")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_pfd5p")
+Button/styles/hover = SubResource("StyleBoxFlat_04bdp")
+Button/styles/normal = SubResource("StyleBoxFlat_fcx6w")
+Button/styles/pressed = SubResource("StyleBoxFlat_oughr")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_q0kdf")
 Title/base_type = &"RichTextLabel"
 Title/font_sizes/normal_font_size = 64
-Title/fonts/normal_font = ExtResource("2_arlvn")
+Title/fonts/normal_font = ExtResource("2_fcx6w")
