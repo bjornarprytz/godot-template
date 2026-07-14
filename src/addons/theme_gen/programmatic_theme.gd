@@ -16,7 +16,7 @@ class_name ProgrammaticTheme
 ## [url]https://github.com/Inspiaaa/ThemeGen[/url]
 
 
-const THEME_GEN_VERSION = "1.3.1"
+const THEME_GEN_VERSION = "1.4.0"
 
 
 ## Determines the verbosity of the logging. 
@@ -26,19 +26,19 @@ const THEME_GEN_VERSION = "1.3.1"
 ## [codeblock]
 ## const VERBOSITY = Verbosity.SILENT # or other option.
 ## [/codeblock]
-enum Verbosity {
+enum Verbosity { 
 	## No logging (except for errors).
-	SILENT = 0,
+	SILENT = 0, 
 	## Only the most important messages are logged.
-	QUIET = 1,
+	QUIET = 1, 
 	## Detailed logging.
-	NORMAL = 2
+	NORMAL = 2 
 }
 
 # Logging levels that correspond to the Verbosity levels.
-enum _LoggingLevel {
+enum _LoggingLevel { 
 	INFO = 1, # For Verbosity.QUIET and higher.
-	DEBUG = 2 # For Verbosity.NORMAL and higher.
+	DEBUG = 2  # For Verbosity.NORMAL and higher.
 }
 
 
@@ -74,7 +74,7 @@ var styles: Dictionary:
 ## processed in define_theme), allowing you to add custom properties.
 var current_theme: Theme:
 	get:
-		assert(_current_theme != null, "The current theme instance can only be accessed from within define_theme().")
+		assert(_current_theme != null, "The current theme instance can only be accessed from within define_theme().") 
 		return _current_theme
 
 
@@ -113,7 +113,7 @@ func define_default_font_size(size: int):
 	_default_font_size = size
 
 
-func inherit(base_style: Dictionary, style2 = null, style3 = null, style4 = null, style5 = null, style6 = null, style7 = null, style8 = null):
+func inherit(base_style: Dictionary, style2=null, style3=null, style4=null, style5=null, style6=null, style7=null, style8=null):
 	var inherited_style = base_style.duplicate()
 
 	for style in [style2, style3, style4, style5, style6, style7, style8]:
@@ -123,7 +123,7 @@ func inherit(base_style: Dictionary, style2 = null, style3 = null, style4 = null
 	return inherited_style
 
 
-func merge(style1: Dictionary, style2, style3 = null, style4 = null, style5 = null, style6 = null, style7 = null, style8 = null):
+func merge(style1: Dictionary, style2, style3=null, style4=null, style5=null, style6=null, style7=null, style8=null):
 	return inherit(style1, style2, style3, style4, style5, style6, style7, style8)
 
 
@@ -131,7 +131,7 @@ func copy(style: Dictionary):
 	return style.duplicate()
 
 
-func include(main_style: Dictionary, style1, style2 = null, style3 = null, style4 = null, style5 = null, style6 = null, style7 = null, style8 = null):
+func include(main_style: Dictionary, style1, style2=null, style3=null, style4=null, style5=null, style6=null, style7=null, style8=null):
 	for style in [style1, style2, style3, style4, style5, style6, style7, style8]:
 		if style != null:
 			main_style.merge(style, true)
@@ -251,6 +251,7 @@ func _update_existing_theme_instance(new_theme: Theme):
 	# To fix this issue, the cached theme resource in memory is fetched and 
 	# mutated in-place (using the fact that when a resource is loaded, Godot uses
 	# the shared instance in memory instead of loading a new instance from disk).
+	
 	if not ResourceLoader.exists(_save_path):
 		return
 	
@@ -483,9 +484,14 @@ func texture_margins(left: int, top = null, right = null, bottom = null):
 		"texture_margin_bottom": bottom
 	}
 
-func shadow_props(size: int = 4, offset: Vector2 = Vector2(2, 2), color: Color = Color.BLACK):
+func margins(left: int, top = null, right = null, bottom = null):
+	if top == null: top = left
+	if right == null: right = left
+	if bottom == null: bottom = top
+
 	return {
-		"shadow_size": size,
-		"shadow_color": color,
-		"shadow_offset": offset
+		"margin_left": left,
+		"margin_top": top,
+		"margin_right": right,
+		"margin_bottom": bottom
 	}
