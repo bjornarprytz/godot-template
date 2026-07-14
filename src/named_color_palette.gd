@@ -44,5 +44,5 @@ func _get_colors() -> Array:
 		foreground,
 		highlight
 	]
-	my_colors += extra_colors
+	my_colors.append_array(extra_colors)
 	return my_colors
