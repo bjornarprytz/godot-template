@@ -21,7 +21,7 @@ config/icon="res://assets/img/icon.svg"
 
 [autoload]
 
-Events="*res://autoloads/event_bus.tscn"
+Events="*res://sys/event_bus.tscn"
 
 [display]
 
