@@ -14,6 +14,9 @@ env:
 jobs:
   export-game:
     name: Export game
+    # Template stop flag: this workflow is disabled until you configure it for your game.
+    # Remove this line (or set it to `if: true`) once the env values and Steamworks setup below are filled in.
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

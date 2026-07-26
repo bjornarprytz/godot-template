@@ -15,6 +15,7 @@ game on itch.io: [link](https://{itchioUsername}.itch.io/{jamName})
   - Hit the Save button
 - Get Butler API key from [itch.io](https://itch.io/user/settings/api-keys)
 - Add key to GitHub repository secrets as BUTLER_API_KEY [link](https://github.com/{githubUsername}/{jamName}/settings/secrets/actions)
+- Enable `.github/workflows/build-and-publish.yml`: fill in the `env` values at the top and remove the `if: false` stop flag on the `export-game` job
 - Push release with `./scripts/push_release.sh`
 - Go [here](https://{itchioUsername}.itch.io/{jamName}/edit) and edit game:
   - Check "This file will be played in the browser"
@@ -34,6 +35,8 @@ game on itch.io: [link](https://{itchioUsername}.itch.io/{jamName})
 
 ### Meta
 
+- Not using Steam? Delete `.github/workflows/deploy-to-steam.yml` (disabled by default via an `if: false` stop flag; only enable it if you set up a Steamworks depot and secrets)
+- Not using itch.io? Delete `.github/workflows/build-and-publish.yml` (same stop-flag pattern)
 - Try programmatic theme
   - https://github.com/Inspiaaa/ThemeGen
 - Tackle multiplayer in HTML5
