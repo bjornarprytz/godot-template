@@ -2,10 +2,10 @@
 extends ProgrammaticTheme
 const UPDATE_ON_SAVE = true
 
-@export var palette = preload("res://ui/theme/my_palette.tres")
+@export var palette = preload("res://interface/theme/my_palette.tres")
 
 func setup():
-	set_save_path("res://ui/theme/global_theme.tres")
+	set_save_path("res://interface/theme/global_theme.tres")
 
 
 var button_color = palette.primary

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sxqqx81q44bf"]
 
-[ext_resource type="Script" uid="uid://dka1kkaqx2rds" path="res://ui/spinner.gd" id="1_kke46"]
+[ext_resource type="Script" uid="uid://dka1kkaqx2rds" path="res://interface/spinner.gd" id="1_kke46"]
 
 [node name="Spinner" type="ColorRect" unique_id=380209634]
 clip_children = 1

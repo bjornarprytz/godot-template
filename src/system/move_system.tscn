@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://i5bdpg8d7fj0"]
 
-[ext_resource type="Script" uid="uid://bcshq4p83pxyq" path="res://sys/move.gd" id="1_f48eg"]
+[ext_resource type="Script" path="res://system/move_system.gd" id="1_f48eg"]
 [ext_resource type="Resource" uid="uid://ce07h02oq6fjp" path="res://data/default_move_stats.tres" id="2_3e52b"]
 
 [node name="Move" type="Node" unique_id=146895734]

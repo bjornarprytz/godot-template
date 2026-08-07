@@ -1,21 +1,20 @@
 [gd_scene format=3 uid="uid://bfq2ku3f8tps3"]
 
 [ext_resource type="Texture2D" uid="uid://85p4vam34uiy" path="res://assets/img/icon.svg" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://c02xigw0vx220" path="res://ui/player.gd" id="2_onrkg"]
-[ext_resource type="PackedScene" uid="uid://i5bdpg8d7fj0" path="res://sys/move.tscn" id="3_hqtel"]
-[ext_resource type="PackedScene" uid="uid://bidwiuqi762w1" path="res://ui/input.tscn" id="4_sweqy"]
+[ext_resource type="Script" uid="uid://c02xigw0vx220" path="res://interface/player.gd" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://i5bdpg8d7fj0" path="res://system/move_system.tscn" id="3_hqtel"]
+[ext_resource type="PackedScene" uid="uid://bidwiuqi762w1" path="res://interface/input.tscn" id="4_sweqy"]
 
 [node name="Player" type="Sprite2D" unique_id=1365254553]
 texture = ExtResource("1_4flbx")
 script = ExtResource("2_onrkg")
 
-[node name="Move" parent="." unique_id=2002591851 node_paths=PackedStringArray("body") instance=ExtResource("3_hqtel")]
+[node name="Move" parent="." unique_id=2002591851 instance=ExtResource("3_hqtel")]
 unique_name_in_owner = true
-body = NodePath("..")
 
-[node name="Input" parent="." unique_id=2064744684 node_paths=PackedStringArray("move_node") instance=ExtResource("4_sweqy")]
+[node name="Input" parent="." unique_id=2064744684 node_paths=PackedStringArray("move_system") instance=ExtResource("4_sweqy")]
 unique_name_in_owner = true
-move_node = NodePath("../Move")
+move_system = NodePath("../Move")
 
 [node name="Speed" type="RichTextLabel" parent="." unique_id=219468438]
 unique_name_in_owner = true
